@@ -114,7 +114,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         if (hapticAvailable) {
             mBrightnessSliderHaptic.setEnabled(showSlider);
         } else {
-            brightnessCategory.removePreference(mBrightnessSliderHaptic);
+            if (brightnessCategory != null) brightnessCategory.removePreference(mBrightnessSliderHaptic);
         }
 
         mShowAutoBrightness = findPreference(KEY_SHOW_AUTO_BRIGHTNESS);
@@ -122,9 +122,9 @@ public class QuickSettings extends SettingsPreferenceFragment implements
                 com.android.internal.R.bool.config_automatic_brightness_available);
 
         if (automaticAvailable) {
-            mShowAutoBrightness.setEnabled(showSlider);
+            if (mShowAutoBrightness != null) mShowAutoBrightness.setEnabled(showSlider);
         } else {
-            brightnessCategory.removePreference(mShowAutoBrightness);
+            if (brightnessCategory != null) brightnessCategory.removePreference(mShowAutoBrightness);
         }
 
         mQsCompactPlayer = (Preference) findPreference(KEY_QS_COMPACT_PLAYER);
